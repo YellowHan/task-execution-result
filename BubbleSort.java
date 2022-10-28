@@ -46,7 +46,6 @@ public class BubbleSort {
                     i--;
                 } // if
             } // for
-
         } // for
 
         // intArr 배열의 값 확인 - 정렬 전
@@ -59,7 +58,6 @@ public class BubbleSort {
             count = 0;
 
             for (int i = 0; i < intArr.length - 1; i++) {
-
                 if (intArr[i] < intArr[i + 1]) { // 두 정수의 값이 오름차순이라면
                     count++;
                     continue;
@@ -68,9 +66,12 @@ public class BubbleSort {
                 tmp = intArr[i];
                 intArr[i] = intArr[i + 1];
                 intArr[i + 1] = tmp;
-
             } // for
 
+            // 정렬 완료 후 for 문이 한 번 더 반복되는 것을 방지
+            if (count >= intArr.length - 2) {
+                break;
+            } // if
         } // while
 
         // intArr 배열의 값 확인 - 정렬 후(오름차순)
@@ -79,7 +80,8 @@ public class BubbleSort {
         System.out.println();
 
         // 내림차순 정렬
-        for(int i = 0 ; i < intArr.length/2 ; i++) {
+        // 이미 정렬되어 있기 때문에 중앙을 기준으로 대칭되는 위치의 값만 교환
+        for (int i = 0; i < intArr.length / 2; i++) {
             tmp = intArr[i];
             intArr[i] = intArr[(intArr.length - 1) - i];
             intArr[(intArr.length - 1) - i] = tmp;
@@ -88,7 +90,5 @@ public class BubbleSort {
         // intArr 배열의 값 확인 - 정렬 후(내림차순)
         System.out.println("----- 내림차순 정렬 -----");
         System.out.println(Arrays.toString(intArr));
-
     } // main
-
 } // end class
